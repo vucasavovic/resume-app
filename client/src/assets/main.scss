@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  border:0;
+  user-select:none;
+  box-sizing:border-box;
+  text-decoration:none;
+  font-family: Inter,sans-serif;
+ }
+
+#app {
+  min-height: 100vh;
+  padding: 0.5rem;
+ display: flex;
+ align-items: stretch;
+  
+}
+
+.input{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+ 
+  >label{
+    width: 100%;
+    font-size: 0.9rem;
+ 
+    opacity: 0.4;
+    text-transform: capitalize;
+    font-family: sans-serif;
+  }
+  >input,textarea{
+    width: 100%;
+       border-bottom:1px solid rgba($color: #000000, $alpha: 0.1);
+      padding: 1rem 0;
+      background-color: transparent;
+      font-family: sans-serif;
+      font-size: 1rem;
+       
+      &:focus{
+          outline: none;
+      }
+  }
+
+  >textarea{
+    resize: vertical;
+    max-height: 300px;
+  }
+}
+
+.enter-form{
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+
+  >form{
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+  }
+}
+
+
+.alternative{
+  >span{
+    color: blue;
+    cursor: pointer;
+  }
+}
+
+
+
+
+ 
