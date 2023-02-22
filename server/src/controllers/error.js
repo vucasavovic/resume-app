@@ -10,7 +10,7 @@ exports.errorHandler = function(err,req,res,next){
             return res.send(ApiResponse.error(`Already registered! Go to login!`));
         }
       
-        res.send(ApiResponse.error(`Unpredicrted err: ${err.message}`));
+        res.send(ApiResponse.error(`Unpredictable error: ${err.message}`));
     }
 
 }

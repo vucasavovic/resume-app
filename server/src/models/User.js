@@ -19,9 +19,9 @@ exports.getByEmail = async function(email){
     const sql = "SELECT * FROM user WHERE email = ?"
     try {
         const [rows] = await promisePool.query(sql,email);
-        
         return rows[0];
     } catch (error) {
+        console.log(error)
         throw error
     }
 }
@@ -39,6 +39,13 @@ exports.register = async function(username, email, hashpass){
         throw error
  
     }
+
+}
+
+exports.login = async function( email, password){
+    const sql = " "
+
+   
 
 }
 

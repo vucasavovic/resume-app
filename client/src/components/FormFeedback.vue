@@ -9,7 +9,6 @@
 
 <script setup>
 import { ref } from 'vue';
-
  
 const text = ref('');
 const appearance = ref('default')

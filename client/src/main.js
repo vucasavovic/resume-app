@@ -8,6 +8,7 @@ import router from './router'
 import './assets/main.scss'
 
 axios.defaults.baseURL = import.meta.env.API_BASE_URL || "http://localhost:3000"
+axios.defaults.withCredentials = true
 
 const app = createApp(App)
 

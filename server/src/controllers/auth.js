@@ -21,15 +21,16 @@ exports.login = async (req,res,next)=>{
   const {email,password} = req.body;
 
   try {
-     
+
     const user = await userModel.getByEmail(email);
     if(!user) return next(ApiResponse.error("Unknown user!"))
-
+    
     const passMatch = await bcrypt.compare(password,user.hashpass);
     if(!passMatch) return next(ApiResponse.error("Email or password incorrect!"))
     
-    ////create session cookie
-
+    //// session cookie
+    req.session.isAuth = true;
+ 
     res.send(ApiResponse.success());
     
   } catch (error) {
