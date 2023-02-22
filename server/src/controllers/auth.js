@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
 const userModel = require('../models/User')
 const ApiResponse = require('../utils/apiResponse');
 
@@ -28,10 +29,13 @@ exports.login = async (req,res,next)=>{
     const passMatch = await bcrypt.compare(password,user.hashpass);
     if(!passMatch) return next(ApiResponse.error("Email or password incorrect!"))
     
-    //// session cookie
-    req.session.isAuth = true;
+    ///session cookie not possible wiothout https
+
+    //// token
+    
+    const token = jwt.sign(user,'nobody knows!')
  
-    res.send(ApiResponse.success());
+    res.send(ApiResponse.success(token));
     
   } catch (error) {
       next(error)
