@@ -20,13 +20,15 @@
   width: 100%;
   align-items: stretch;
   overflow: hidden;
-  border-radius: 1rem;
+ 
   gap: 0.5rem;
   >.body{
       flex: 1;
       overflow: auto;
-       
-      border-radius: 1rem;
+      
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
   }
  }
 </style>

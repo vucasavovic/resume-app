@@ -29,8 +29,12 @@ router.beforeEach((to, from, next) => {
   const store = useMainStore();
 
   if(to.meta.auth && !store.userLogged){
-   next('/enter/login')
+   return next('/enter/login')
   }
+  else if(store.userLogged && to.name==='enter'){
+    return next('/dashboard')
+  }
+  
   else  next()
 })
 
