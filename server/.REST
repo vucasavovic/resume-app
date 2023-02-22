@@ -1,0 +1,33 @@
+###
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "username":"hugoboss",
+    "email":"hugoboss@gmail.com",
+    "password":"123456",
+    "confirm":"123456"
+}
+
+####
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email":"hugoboss@gmail.com",
+    "password":"123456"
+}
+
+
+ 
+###
+POST http:localhost:3000/user/resume/save
+Content-Type: application/json
+
+{
+    
+    "role":"frontend developer",
+    "about":"Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque mollis habitant, tortor himenaeos vitae malesuada urna velit tincidunt facilisi pretium, sollicitudin faucibus pharetra et per class proin nam dictumst.",
+    "interests":"Swimming, cooking, coffee, philantrophy",
+    "summary":"Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque mollis habitant, tortor himenaeos vitae malesuada urna velit tincidunt facilisi pretium, sollicitudin faucibus pharetra et per class proin nam dictumst."
+}
