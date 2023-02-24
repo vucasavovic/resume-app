@@ -45,9 +45,11 @@ const feedback = ref(null);
            
             feedback.value.warning(res.data.status.message);
         }else{
-            const token= res.data.payload;
-            sessionStorage.setItem('token',token)
+            const payload= res.data.payload;
+            sessionStorage.setItem('token',payload.token)
+            axios.defaults.headers.common['Authorization'] = payload.token;
             store.userLogged = true;
+            store.user = payload.user;
             router.push('/dashboard')
         }
     }).catch((err)=>{

@@ -3,6 +3,22 @@ var jwt = require('jsonwebtoken');
 const userModel = require('../models/User')
 const ApiResponse = require('../utils/apiResponse');
 
+
+exports.validate = function(req,res,next){
+  const token  = req.headers['authorization']
+   
+   jwt.verify(token,process.env.TOKEN_SECRET,(err,user)=>{
+    if(err){
+      console.log('Error');
+      next(ApiResponse.error(err))
+    }else{
+      console.log('Success');
+      req.userId = user.id;
+      next()
+    }
+   })
+}
+
 exports.register = async function(req,res,next){
     const {email,password,confirm} = req.body
     console.log(password);
@@ -24,6 +40,7 @@ exports.login = async (req,res,next)=>{
   try {
 
     const user = await userModel.getByEmail(email);
+ 
     if(!user) return next(ApiResponse.error("Unknown user!"))
     
     const passMatch = await bcrypt.compare(password,user.hashpass);
@@ -32,10 +49,14 @@ exports.login = async (req,res,next)=>{
     ///session cookie not possible wiothout https
 
     //// token
+    const tokenData = {id:user.id,email:user.email}
+    const token = jwt.sign(tokenData,process.env.TOKEN_SECRET)
     
-    const token = jwt.sign(user,'nobody knows!')
- 
-    res.send(ApiResponse.success(token));
+
+    delete user.id;
+    delete user.hashpass;
+
+    res.send(ApiResponse.success({token:token,user:user}));
     
   } catch (error) {
       next(error)

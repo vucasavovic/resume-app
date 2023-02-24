@@ -21,14 +21,11 @@
   align-items: stretch;
   overflow: hidden;
  
-  gap: 0.5rem;
   >.body{
       flex: 1;
       overflow: auto;
-      
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
+      min-height: 100vh;
+
   }
  }
 </style>

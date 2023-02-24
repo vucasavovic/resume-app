@@ -8,6 +8,7 @@ exports.getById = async function(id){
     const sql = "SELECT * FROM user WHERE id = ?"
     try {
         const [rows] = await promisePool.query(sql,id);
+        rows[0].ready = Boolean(rows[0].ready)
         return rows[0];
     } catch (error) {
         throw error
@@ -19,6 +20,7 @@ exports.getByEmail = async function(email){
     const sql = "SELECT * FROM user WHERE email = ?"
     try {
         const [rows] = await promisePool.query(sql,email);
+        rows[0].ready = Boolean(rows[0].ready)
         return rows[0];
     } catch (error) {
         console.log(error)
@@ -41,11 +43,5 @@ exports.register = async function(username, email, hashpass){
     }
 
 }
-
-exports.login = async function( email, password){
-    const sql = " "
-
-   
-
-}
+ 
 

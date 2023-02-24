@@ -1,9 +1,7 @@
 <template>
     <div class="input">
-        <label for="">{{props.label}}</label>
-        
-        <input  :type="props.type" :placeholder="props.placeholder" :value="props.modelValue" @input="handleInput($event.target.value)">
-        
+        <label v-if="props.label" for="">{{props.label}}</label>
+         <textarea :placeholder="props.placeholder" :value="props.modelValue" @input="handleInput($event.target.value)" ></textarea>
     </div>
 </template>
 

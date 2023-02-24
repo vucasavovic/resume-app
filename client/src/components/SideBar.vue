@@ -3,9 +3,12 @@
         <span>
             <img src="/images/logo.svg" alt="brand logo">
         </span>
-        <span></span>
+        <span class="navigation">
+            <IconButton @click="router.push('/dashboard')"   img="home.svg"/>
+            <IconButton @click="router.push('/account')"   img="avatar.svg"/>
+        </span>
         <span>
-            <IconButton @click ='logout' img="exit.svg"/>
+            <IconButton v-if="store.userLogged" @click ='logout' img="exit.svg"/>
         </span>
     </div>
 </template>
@@ -29,8 +32,8 @@ const logout = function(){
 .nav-bar{
     position: sticky;
     top: 0px;
-    background-color: black;
-    max-width: 120px;
+    background-color: $mainColor;
+    max-width: 90px;
     width: 100%;
     max-height: 100vh;
     padding: 2rem 1rem;
@@ -46,6 +49,13 @@ const logout = function(){
     >:last-child{
         display: flex;
         align-items: flex-end;
+    }
+
+    & .navigation{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
     }
 }
 </style>
